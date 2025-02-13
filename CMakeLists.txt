@@ -1,3 +1,19 @@
+# == DO NOT EDIT THE FOLLOWING LINES for the Raspberry Pi Pico VS Code Extension to work ==
+if(WIN32)
+    set(USERHOME $ENV{USERPROFILE})
+else()
+    set(USERHOME $ENV{HOME})
+endif()
+set(sdkVersion 2.1.0)
+set(toolchainVersion 13_3_Rel1)
+set(picotoolVersion 2.1.0)
+set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
+if (EXISTS ${picoVscode})
+    include(${picoVscode})
+endif()
+# ====================================================================================
+set(PICO_BOARD pico CACHE STRING "Board type")
+
 # Definição da versão mínima do CMake necessária
 cmake_minimum_required(VERSION 3.13)
 
@@ -21,7 +37,6 @@ add_subdirectory(onewire_library)
 # Criação do executável com os arquivos fonte necessários
 add_executable(Projeto-Final
     Projeto-Final.c
-    onewire.c
     ssd1306.c
 )
 
