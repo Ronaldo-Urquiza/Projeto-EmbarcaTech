@@ -141,7 +141,6 @@ Os seguintes dados são enviados a cada **30 segundos**:
 ## 📚 Documentação e Contribuição
 
 - **Comentários no Código:** Consulte os arquivos `.c` e `.h` para explicações detalhadas.
-- **Contribuições:** Pull requests são bem-vindos!
 
 ---
 
