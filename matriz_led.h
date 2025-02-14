@@ -3,7 +3,6 @@
 #include "hardware/pio.h"
 #include "hardware/clocks.h"
 #include "ws2818b.pio.h"
-#
 
 #define LED_COUNT 25
 #define LED_PIN 7

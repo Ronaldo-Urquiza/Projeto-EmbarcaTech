@@ -12,7 +12,7 @@ if (EXISTS ${picoVscode})
     include(${picoVscode})
 endif()
 # ====================================================================================
-set(PICO_BOARD pico CACHE STRING "Board type")
+set(PICO_BOARD pico_w)
 
 # Definição da versão mínima do CMake necessária
 cmake_minimum_required(VERSION 3.13)
@@ -62,6 +62,13 @@ target_link_libraries(Projeto-Final
     hardware_clocks
     hardware_adc
     onewire_library
+    hardware_spi
+    hardware_dma
+    hardware_interp
+    hardware_timer
+    hardware_watchdog
+    pico_lwip_http
+    pico_cyw43_arch_lwip_threadsafe_background
 )
 
 
