@@ -64,5 +64,6 @@ target_link_libraries(Projeto-Final
     onewire_library
 )
 
+
 # Geração de arquivos binários adicionais (UF2, bin, etc.)
 pico_add_extra_outputs(Projeto-Final)

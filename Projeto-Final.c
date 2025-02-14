@@ -6,6 +6,7 @@
 #include "onewire_library.h"
 #include "ds18b20.h"
 #include "ow_rom.h"
+#include "matriz_led.h"
 
 // Definições dos pinos
 #define SENSOR_UMIDADE_GPIO 28  // GPIO para o sensor de umidade do solo (Analógcio)
@@ -103,6 +104,7 @@ float ler_temperatura_solo() {
         ow_send(&ow, DS18B20_READ_SCRATCHPAD);
         uint8_t temp_lsb = ow_read(&ow);
         uint8_t temp_msb = ow_read(&ow);
+
         int16_t temp = (temp_msb << 8) | temp_lsb;
         temperatura = temp / 16.0;
     } else {
@@ -121,6 +123,8 @@ bool decidir_estado_plantinha(float umidade_solo, float temperatura_solo, bool l
 }
 
 int main() {
+
+    npInit(7);
     configurar_hardware();
     bool umidade_solo = false;
     bool plantinha_feliz = false;
@@ -188,6 +192,12 @@ int main() {
 
         // Atualiza o display
         ssd1306_show(&oled);
+
+        if(plantinha_feliz){
+            npCarinhaFeliz();
+        }else{
+            npCarinhaTriste();
+        }
 
         // Aguarda 500 milissegundos antes da próxima leitura
         sleep_ms(500);
